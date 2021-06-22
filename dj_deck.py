@@ -19,10 +19,11 @@ class dj_deck(object):
         """Sets an output name. Expects to get new name(STRING) and ID from range of <1-2>"""
         assert type(name) == str and type(id) == int and id in range(1,3), "ERROR! Expected two parameters: [name] of STRING type and [id] of INT type and in range <1-2>"
         self.outputs[id - 1] = name
-
-        # SAVE IN CONFIG!
+        #TODO: save in config file
 
     def set_current(self, id):
+        """Sets current audio output device. Expects to get id(INT)"""
+        assert type(id) == int and id in range(1,3), "ERROR! Expected parameter [id] of INT type and from range 1-2"
         self.current_output = id
         os.system(f"nircmd setdefaultsounddevice \"{self.outputs[id]}\" 1")
         self.content[2] = f"CURR_OUT={self.current_output}"

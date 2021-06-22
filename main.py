@@ -1,12 +1,11 @@
 from dj_deck import dj_deck
-
-
-from dj_deck import dj_deck
 import os
-config = "config.config"
+config = "config.conf"
 
 with open(config) as f:
     content = f.readlines()
+    #TODO: error handling, when file does not exist
+    f.close()
 
 deck = dj_deck(config, content)
 program_running = True
