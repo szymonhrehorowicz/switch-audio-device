@@ -1,14 +1,11 @@
 from dj_deck import dj_deck
 import os
+
 config = "config.conf"
+deck = dj_deck(config)
 
-with open(config) as f:
-    content = f.readlines()
-    #TODO: error handling, when file does not exist
-    f.close()
-
-deck = dj_deck(config, content)
 program_running = True
+
 while program_running:
     os.system("cls")
     print("Welcome to DJ Deck v0.1")
@@ -26,7 +23,7 @@ while program_running:
     elif answer == "2":
         os.system("cls")
         name = input("Output name: ")
-        id = int(input("Output id[1-2]: "))
+        id = int(input("Output id[0-1]: "))
         deck.set_output(name, id)
         print("Successfully changed device name")
         input("go back")
